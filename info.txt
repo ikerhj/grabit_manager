@@ -1,0 +1,1 @@
+https://python-adv-web-apps.readthedocs.io/en/latest/flask_db1.html
