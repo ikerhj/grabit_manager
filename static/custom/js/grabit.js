@@ -45,3 +45,52 @@ $(function(){
 		});
 	});
 });
+
+
+$(function() {
+    $('a#calculate').bind('click', function() {
+      $.getJSON($SCRIPT_ROOT + '/leer_datos', {
+        a: $('input[name="a"]').val(),
+        b: $('input[name="b"]').val()
+      }, function(data) {
+        $("#result").text(data.result);
+      });
+      return false;
+    });
+});
+
+var response = [{
+      "rank":"9",
+      "content":"Alon",
+      "UID":"5"
+     },
+     {
+       "rank":"6",
+       "content":"Tala",
+       "UID":"6"
+    }];
+
+$("#selec_proyecto").change(function() {
+    //$.getJSON($SCRIPT_ROOT + '/leer_datos', {
+    //    a: $('input[name="a"]').val(),
+    //    b: $('input[name="b"]').val()
+    //  }, function(data) {
+    //    $("#result").text(data.result);
+    //  });
+    //  return false;
+    var response = '[{"rank":"9", "content":"Alon", "UID":"5" }';
+    response += ',{"rank":"6","content":"Tala","UID":"6"}]';
+    response = $.parseJSON(response);
+
+    $(function () {
+    $.each(response, function (i, item) {
+        $('<tr>').append(
+        $('<td>').text(item.rank),
+        $('<td>').text(item.content),
+        $('<td>').text(item.UID)).appendTo('#tableWithSearch');
+        // $('#records_table').append($tr);
+        //console.log($tr.wrap('<p>').html());
+    });
+    });
+});
+
