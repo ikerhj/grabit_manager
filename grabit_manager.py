@@ -1,7 +1,5 @@
 #-*-coding=utf-8-*-
 from flask import Flask, render_template, request, json, jsonify
-import json
-import string
 import os
 import sys
 
@@ -35,9 +33,20 @@ def index():
 
 @app.route('/leer_datos')
 def leer_datos():
-    a = request.args.get('a', 0, type=int)
-    b = request.args.get('b', 0, type=int)
-    return jsonify(result=a + b)
+    filas = []
+    fila = {}
+    c = request.args.get('c','pordefecto',type=str)
+    if c == "Proyecto":
+        fila["rank"] = 9
+        fila['content'] = 'Alon'
+        fila['uid'] = '5'
+        filas.append(fila)
+    else:
+        filas.append("joder")
+    #a = request.args.get('a', 0, type=int)
+    #b = request.args.get('b', 0, type=int)
+    #return jsonify(result=a + b)
+    return  jsonify(result = filas)
 
 @app.route('/input_datos', methods=['POST'])
 def inputProyecto():
