@@ -295,6 +295,14 @@
 
             <!-- aqui comienza el formulario de insertar datos en el proyecto -->
             <div id="div_cargar_datos" class="display-none">
+              <p>Seleccione la tabla que quiere cargar</p>
+                <br>
+                <select class="full-width" id="cargar_tabla" data-init-plugin="select2">
+                    <option value="Proyecto">Proyecto</option>
+                    <option value="Implementacion">Implementacion</option>
+                </select>
+                <br>
+                <br>
               <h4>Formulario de entrada de datos del proyecto.</h4>
               <!--<p class="m-t-10 m-b-20 mw-80">We understand that sometimes conventions shouldn't be removed completely. People are already used to them. Use these text-fields whenever it is necessary.</p>-->
               <form role="form">
@@ -335,13 +343,7 @@
                 </select>
                 <br>
                 <br>
-                <div>
-                    <h1>jQuery Example</h1>
-                    <p><input type=text size=5 name=a> +
-                       <input type=text size=5 name=b> =
-                       <span id=result>?</span>
-                    <p><a href=# id=calculate>calculate server side</a>
-                </div>
+
                 <div class="card-body">
                     <table class="table table-hover demo-table-search table-responsive-block" id="tableWithSearch">
                       <thead>

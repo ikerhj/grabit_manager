@@ -43,9 +43,6 @@ def leer_datos():
         filas.append(fila)
     else:
         filas.append("joder")
-    #a = request.args.get('a', 0, type=int)
-    #b = request.args.get('b', 0, type=int)
-    #return jsonify(result=a + b)
     return  jsonify(result = filas)
 
 @app.route('/input_datos', methods=['POST'])
