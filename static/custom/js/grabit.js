@@ -1,32 +1,52 @@
 $(document).ready(function(){
+
+    //en la carga de la pagina se mostrar el div dashboard por defecto
+    $("#div_dashboard").show()
+    $("#div_cargar_datos").hide()
+    $("#div_ver_datos").hide()
     //gestion de la visibilidad de los div cuando se clica el link de dashboard_menu
     $("#dashboard_menu").click(function(){
+                $("#div_dashboard").show()
+                $("#div_cargar_datos").hide()
+                $("#div_ver_datos").hide()
+                /*
                 $("#div_dashboard").addClass('container-fluid container-fixed-lg');
                 $("#div_dashboard").removeClass('display-none');
                 $("#div_cargar_datos").removeClass('card-body');
                 $("#div_cargar_datos").addClass('display-none');
                 $("#div_ver_datos").removeClass('card-body');
                 $("#div_ver_datos").addClass('display-none');
+                */
     });
 
     //gestion de la visibilidad de los div cuando se clica el link de cargar_datos_menu
     $("#cargar_datos_menu").click(function(){
+                $("#div_dashboard").hide()
+                $("#div_cargar_datos").show()
+                $("#div_ver_datos").hide()
+                /*
                 $("#div_dashboard").removeClass('container-fluid container-fixed-lg');
                 $("#div_dashboard").addClass('display-none');
                 $("#div_cargar_datos").addClass('card-body');
                 $("#div_cargar_datos").removeClass('display-none');
                 $("#div_ver_datos").removeClass('card-body');
                 $("#div_ver_datos").addClass('display-none');
+                */
     });
 
     //gestion de la visibilidad de los div cuando se clica el link de ver_datos_menu
     $("#ver_datos_menu").click(function(){
+                $("#div_dashboard").hide()
+                $("#div_cargar_datos").hide()
+                $("#div_ver_datos").show()
+                /*
                 $("#div_ver_datos").addClass('card-body');
                 $("#div_ver_datos").removeClass('display-none');
                 $("#div_dashboard").removeClass('container-fluid container-fixed-lg');
                 $("#div_dashboard").addClass('display-none');
                 $("#div_cargar_datos").addClass('display-none');
                 $("#div_cargar_datos").removeClass('card-body');
+                */
     });
 
     //click de boton que gestiona el formulario que carga las tablas
