@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, json, jsonify
 import os
 import sys
 
-#import boto3
+import boto3
 #sys.path.insert(1, '/grabit_ai/scripts/')
 #import utils
 app = Flask(__name__)
@@ -18,14 +18,11 @@ nombre_columnas=[
     "clases"
 ]
 
-#creamos un diccionario que tendra todos los datos de la query
-configuracion_deepstream = {}
 
-#se lee el cluster_arn y secret_arn del fichero de config
-#proyecto_id_dict = utils.leer_parametros_configuración(sFichero_ID_proyecto)
-#cluster_arn = proyecto_id_dict['cluster_arn']
-#secret_arn = proyecto_id_dict['secret_arn']
 
+
+cluster_arn=""
+secret_arn=""
 
 @app.route("/")
 def index():
@@ -33,14 +30,37 @@ def index():
 
 @app.route('/leer_datos')
 def leer_datos():
+    #filas = []
+    #fila = {}
     filas = []
-    fila = {}
     c = request.args.get('c','pordefecto',type=str)
     if c == "Proyecto":
-        fila["rank"] = 9
-        fila['content'] = 'Alon'
-        fila['uid'] = '5'
-        filas.append(fila)
+
+        sql = "select * from proyecto where id in (22,23)"
+        rdsData = boto3.client('rds-data')
+        response = rdsData.execute_statement(
+            resourceArn=cluster_arn,
+            secretArn=secret_arn,
+            database=nombre_db,
+            sql=sql
+        )
+        # creamos un diccionario que tendra todos los datos de la query
+
+
+        for i in range(len(response['records'])):
+            fila = {}
+            for j in range(len(response['records'][i])):
+                for k, v in response['records'][i][j].items():
+                    fila[nombre_columnas[j]] = v
+                    # print(configuracion_deepstream)
+            filas.append(fila)
+
+
+
+        #fila["rank"] = 9
+        #fila['content'] = 'Alon'
+        #fila['uid'] = '5'
+        #filas.append(fila)
     else:
         filas.append("joder")
     return  jsonify(result = filas)
@@ -60,6 +80,7 @@ def inputProyecto():
             database = nombre_db,
             sql = sql
     )
+    print(response)
     print(proyectoID,proyectoNombre,proyectoTipo,proyectoRutaS3,proyectoClases)
     return jsonify({'status':'OK'})
 

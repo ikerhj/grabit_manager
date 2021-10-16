@@ -9,14 +9,6 @@ $(document).ready(function(){
                 $("#div_dashboard").show()
                 $("#div_cargar_datos").hide()
                 $("#div_ver_datos").hide()
-                /*
-                $("#div_dashboard").addClass('container-fluid container-fixed-lg');
-                $("#div_dashboard").removeClass('display-none');
-                $("#div_cargar_datos").removeClass('card-body');
-                $("#div_cargar_datos").addClass('display-none');
-                $("#div_ver_datos").removeClass('card-body');
-                $("#div_ver_datos").addClass('display-none');
-                */
     });
 
     //gestion de la visibilidad de los div cuando se clica el link de cargar_datos_menu
@@ -24,14 +16,6 @@ $(document).ready(function(){
                 $("#div_dashboard").hide()
                 $("#div_cargar_datos").show()
                 $("#div_ver_datos").hide()
-                /*
-                $("#div_dashboard").removeClass('container-fluid container-fixed-lg');
-                $("#div_dashboard").addClass('display-none');
-                $("#div_cargar_datos").addClass('card-body');
-                $("#div_cargar_datos").removeClass('display-none');
-                $("#div_ver_datos").removeClass('card-body');
-                $("#div_ver_datos").addClass('display-none');
-                */
     });
 
     //gestion de la visibilidad de los div cuando se clica el link de ver_datos_menu
@@ -39,25 +23,12 @@ $(document).ready(function(){
                 $("#div_dashboard").hide()
                 $("#div_cargar_datos").hide()
                 $("#div_ver_datos").show()
-                /*
-                $("#div_ver_datos").addClass('card-body');
-                $("#div_ver_datos").removeClass('display-none');
-                $("#div_dashboard").removeClass('container-fluid container-fixed-lg');
-                $("#div_dashboard").addClass('display-none');
-                $("#div_cargar_datos").addClass('display-none');
-                $("#div_cargar_datos").removeClass('card-body');
-                */
     });
 
     //click de boton que gestiona el formulario que carga las tablas
     $('#btn_cargar_datos').click(function(){
-        //var inputProyectoID = $('#inputProyectoID').val();
-        //var inputProyectoNombre = $('#inputProyectoNombre').val();
-        //var inputProyectoTipo = $('#inputProyectoTipo').val();
-        //var inputProyectoRutaS3 = $('#inputProyectoRutaS3').val();
-        //var inputProyectoClases = $('inputProyectoClases').val();
         $.ajax({
-            url: '/inputProyecto',
+            url: '/input_datos',
             data: $('form').serialize(),
             type: 'POST',
             success: function(response){
@@ -77,9 +48,11 @@ $(document).ready(function(){
         }, function(data) {
                 $.each(data.result, function (i, item) {
                     $('<tr>').append(
-                        $('<td>').text(item.rank),
-                        $('<td>').text(item.content),
-                        $('<td>').text(item.uid)
+                        $('<td>').text(item.id),
+                        $('<td>').text(item.nombre),
+                        $('<td>').text(item.tipo),
+                        $('<td>').text(item.ruta_s3),
+                        $('<td>').text(item.clases)
                     ).appendTo('#tableWithSearch');
                 });
           });
