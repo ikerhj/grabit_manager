@@ -1,12 +1,34 @@
+// Initialize and add the map
+function initMap() {
+    // The location of Uluru
+        const uluru = { lat: -25.344, lng: 131.036 };
+        // The map, centered at Uluru
+        const map = new google.maps.Map(document.getElementById("div_dashboard"), {
+          zoom: 4,
+          center: uluru,
+        });
+        // The marker, positioned at Uluru
+        const marker = new google.maps.Marker({
+          position: uluru,
+          map: map,
+        });
+        // Evento click sobre el marker creado
+        marker.addListener('click', function() {
+          $("#div_dashboard_details").show();
+        });
+      }
+
 $(document).ready(function(){
 
     //en la carga de la pagina se mostrar el div dashboard por defecto
     $("#div_dashboard").show()
+    $("#div_dashboard_details").hide()
     $("#div_cargar_datos").hide()
     $("#div_ver_datos").hide()
     //gestion de la visibilidad de los div cuando se clica el link de dashboard_menu
     $("#dashboard_menu").click(function(){
                 $("#div_dashboard").show()
+                $("#div_dashboard_details").hide()
                 $("#div_cargar_datos").hide()
                 $("#div_ver_datos").hide()
     });
@@ -14,6 +36,7 @@ $(document).ready(function(){
     //gestion de la visibilidad de los div cuando se clica el link de cargar_datos_menu
     $("#cargar_datos_menu").click(function(){
                 $("#div_dashboard").hide()
+                $("#div_dashboard_details").hide()
                 $("#div_cargar_datos").show()
                 $("#div_ver_datos").hide()
     });
@@ -21,6 +44,7 @@ $(document).ready(function(){
     //gestion de la visibilidad de los div cuando se clica el link de ver_datos_menu
     $("#ver_datos_menu").click(function(){
                 $("#div_dashboard").hide()
+                $("#div_dashboard_details").hide()
                 $("#div_cargar_datos").hide()
                 $("#div_ver_datos").show()
     });
