@@ -15,7 +15,12 @@ function initMap() {
         // Evento click sobre el marker creado
         marker.addListener('click', function() {
           $("#div_dashboard_details").show();
-        });
+          $.getJSON($SCRIPT_ROOT + '/leer_datos_sideways', {
+            c: $("#selec_proyecto").val()
+            }, function(data) {
+                    console.log(data.result)
+              });
+            });
       }
 
 $(document).ready(function(){
@@ -52,7 +57,7 @@ $(document).ready(function(){
     //click de boton que gestiona el formulario que carga las tablas
     $('#btn_cargar_datos').click(function(){
         $.ajax({
-            url: '/input_datos',
+            url: '/insertar',
             data: $('form').serialize(),
             type: 'POST',
             success: function(response){
@@ -62,6 +67,10 @@ $(document).ready(function(){
                 console.log(error);
             }
         });
+        $("#div_dashboard").hide()
+        $("#div_dashboard_details").hide()
+        $("#div_cargar_datos").show()
+        $("#div_ver_datos").hide()
     });
 
     //al hacer la selección de la tabla, se muestran los datos de dicha tabla
