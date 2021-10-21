@@ -182,6 +182,38 @@ def leer_datos_sideways():
         'asset_id': asset_elegido['id'],
         'info_total_asset': info_total_asset
     }
+
+    informacion_especifica={
+        'nombre_propiedad':informacion_completa['info_total_asset'][0]
+        'CPU1':informacion_completa['info_total_asset'][1]
+        'RAM_usage':informacion_completa['info_total_asset'][9]
+        'GPU': informacion_completa['info_total_asset'][11]
+        'CPU_temp':informacion_completa['info_total_asset'][12]
+        'GPU_temp':informacion_completa['info_total_asset'][13]
+        'thermal':informacion_completa['info_total_asset'][14]
+    }
+    """
+    Orden de las propiedades del asset:
+        nombre
+        CPU 1 usage
+        CPU 2 usage
+        CPU 3 usage
+        CPU 4 usage
+        CPU 5 usage
+        CPU 7 usage
+        CPU 8 usage
+        RAM usage
+        RAM total
+        GPU usage
+        CPU Temp
+        GPU Temp
+        Thermal
+        TempAO
+        TempPPL
+        IP
+        Jetpack version
+    """
+
     return jsonify(result=informacion_completa)
 
 if __name__=="__main__":
