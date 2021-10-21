@@ -184,12 +184,12 @@ def leer_datos_sideways():
     }
 
     informacion_especifica={
-        'nombre_propiedad':informacion_completa['info_total_asset'][0]
-        'CPU1':informacion_completa['info_total_asset'][1]
-        'RAM_usage':informacion_completa['info_total_asset'][9]
-        'GPU': informacion_completa['info_total_asset'][11]
-        'CPU_temp':informacion_completa['info_total_asset'][12]
-        'GPU_temp':informacion_completa['info_total_asset'][13]
+        'nombre_propiedad':informacion_completa['info_total_asset'][0],
+        'CPU1':informacion_completa['info_total_asset'][1],
+        'RAM_usage':informacion_completa['info_total_asset'][9],
+        'GPU': informacion_completa['info_total_asset'][11],
+        'CPU_temp':informacion_completa['info_total_asset'][12],
+        'GPU_temp':informacion_completa['info_total_asset'][13],
         'thermal':informacion_completa['info_total_asset'][14]
     }
     """
